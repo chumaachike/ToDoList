@@ -14,7 +14,9 @@
       "no-shadow": "off",
       "no-param-reassign": "off",
       "eol-last": "off",
-      "camelcase": "off"
+      "camelcase": "off",
+      "space-before-function-paren": "off",
+      "space-before-blocks": "off"
     },
     "ignorePatterns": [
       "dist/",
