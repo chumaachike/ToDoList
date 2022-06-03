@@ -1,11 +1,10 @@
-import Task from './Task';
 import threeLine from '../assets/3-vertical-dots.png';
 
 export default class TaskList {
   constructor(placeholder) {
     this.head = null;
     this.size = 0;
-    this.tasks =  []
+    this.tasks = [];
     this.createTask(placeholder, this.tasks);
   }
 
