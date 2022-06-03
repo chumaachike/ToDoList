@@ -89,4 +89,4 @@ export default class TaskList {
   //         const element = this.getElement(index);
   //     });
   // }
-}   
+}
