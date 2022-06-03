@@ -10,6 +10,7 @@ h1 {
 .linethrough {
   text-decoration: line-through;
 }
+
 ul {
   width: 50%;
   background-color: inherit;
@@ -44,6 +45,7 @@ form input {
 .move-pointer {
   cursor: move;
 }
+
 button {
   width: 50%;
   margin: 0;

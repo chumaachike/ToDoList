@@ -1,5 +1,6 @@
 import Task from './Task';
 import threeLine from '../assets/3-vertical-dots.png';
+
 export default class TaskList {
   constructor(placeholder) {
     this.head = null;
@@ -47,6 +48,7 @@ export default class TaskList {
       listItem.appendChild(imgIcon);
       label.classList.add('label');
       label.setAttribute('data', i);
+      i +=1
       checkBox.type = 'checkbox';
       label.innerHTML = `${element.task.description}`;
       element.task.index = i;
@@ -54,8 +56,9 @@ export default class TaskList {
     const deleteButoon = document.createElement('button');
     deleteButoon.innerHTML = 'clear all completed items';
     placeholder.appendChild(deleteButoon);
-    deleteButoon.addEventListener('click', this.delete.bind(this, placeholder));
+    deleteButoon.addEventListener('click', this.delete.bind());
   };
+
   isDone(evt) {
     const label = evt.target.closest('li').children[1];
     if (evt.target.checked) {
@@ -64,6 +67,7 @@ export default class TaskList {
       label.classList.remove('linethrough');
     }
   }
+
   getElement(index) {
     let current = this.head;
     let count = 0;
@@ -71,7 +75,7 @@ export default class TaskList {
       if (count === index) {
         return current;
       }
-      count++;
+      count+=1;
       current = current.next_task;
     }
     return null;
