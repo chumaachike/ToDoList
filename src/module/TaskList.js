@@ -6,30 +6,8 @@ export default class TaskList {
     this.head = null;
     this.size = 0;
     this.tasks =  []
-    
-    // JSON.parse(localStorage.getItem('todolist')) ||
     this.createTask(placeholder, this.tasks);
   }
-
-//   addtask = (taskDetails, placeholder) => {
-//     const task = new Task(taskDetails);
-
-//     let current;
-//     if (!this.head) {
-//       this.head = task;
-//     } else {
-//       current = this.head;
-//       while (current.next_task) {
-//         current = current.next_task;
-//       }
-//       current.next_task = task;
-//     }
-//     this.size += 1;
-//     this.tasks.push(task);
-//     this.createTask(placeholder, this.tasks);
-
-//     localStorage.setItem('todolist', JSON.stringify(this.tasks));
-//   };
 
   createTask = (placeholder, arr) => {
     placeholder.innerHTML = '';
@@ -58,37 +36,5 @@ export default class TaskList {
     const deleteButoon = document.createElement('button');
     deleteButoon.innerHTML = 'clear all completed items';
     placeholder.appendChild(deleteButoon);
-    //deleteButoon.addEventListener('click', this.delete.bind(this));
   };
-
-  //   isDone(evt) {
-  //     const label = evt.target.closest('li').children[1];
-  //     if (evt.target.checked) {
-  //       label.classList.add('linethrough');
-  //     } else {
-  //       label.classList.remove('linethrough');
-  //     }
-  //   }
-
-  //   getElement(index) {
-  //     let current = this.head;
-  //     let count = 0;
-  //     while (current) {
-  //       if (count === index) {
-  //         return current;
-  //       }
-  //       count += 1;
-  //       current = current.next_task;
-  //     }
-  //     return null;
-  //   }
-
-  // delete(placeholder, evt){
-  //     const doneItems = document.querySelectorAll('.linethrough');
-
-  //     doneItems.forEach((item)=>{
-  //         const index = item.getAttribute('data')
-  //         const element = this.getElement(index);
-  //     });
-  // }
 }
