@@ -19,9 +19,8 @@ form.addEventListener('submit', (e) => {
   object.description = document.querySelector('.desc').value;
   if (object.description === '') {
     return;
-  };
+  }
   document.querySelector('.desc').value = '';
   tasklist.addtask(object, placeHolder);
 });
 checkboxes.forEach((checkbox) => checkbox.addEventListener('change', tasklist.isDone.bind(tasklist)));
-
