@@ -1,0 +1,61 @@
+body {
+  margin: 20px;
+  background-color: #f6f6f6;
+}
+
+h1 {
+  text-align: center;
+}
+
+.linethrough {
+  text-decoration: line-through;
+}
+
+ul {
+  width: 50%;
+  background-color: inherit;
+  padding: 0;
+}
+
+.desc {
+  width: 100%;
+}
+
+li {
+  list-style-type: none;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  width: 100%;
+  padding: 15px 10px;
+  line-height: 20px;
+  word-wrap: break-word;
+  margin: 0;
+}
+
+form {
+  width: 50%;
+}
+
+form input {
+  width: 40%;
+}
+
+.move-pointer {
+  cursor: move;
+}
+
+button {
+  width: 50%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: inherit;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+label {
+  background-color: #f6f6f6;
+}
