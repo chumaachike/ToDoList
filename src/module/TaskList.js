@@ -48,7 +48,7 @@ export default class TaskList {
       listItem.appendChild(imgIcon);
       label.classList.add('label');
       label.setAttribute('data', i);
-      i +=1
+      i += 1;
       checkBox.type = 'checkbox';
       label.innerHTML = `${element.task.description}`;
       element.task.index = i;
@@ -56,7 +56,7 @@ export default class TaskList {
     const deleteButoon = document.createElement('button');
     deleteButoon.innerHTML = 'clear all completed items';
     placeholder.appendChild(deleteButoon);
-    deleteButoon.addEventListener('click', this.delete.bind());
+    deleteButoon.addEventListener('click', this.delete);
   };
 
   isDone(evt) {
@@ -75,7 +75,7 @@ export default class TaskList {
       if (count === index) {
         return current;
       }
-      count+=1;
+      count += 1;
       current = current.next_task;
     }
     return null;
