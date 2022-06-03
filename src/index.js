@@ -21,15 +21,15 @@ const chores = [
   {
     iscomplted: false,
     description: 'go and study',
-    index: null
+    index: null,
   },
   {
     iscomplted: false,
     description: 'go to school',
     index: 1,
   },
-]
+];
 
 window.addEventListener('DOMContentLoaded', () => {
-    tasklist.createTask(placeHolder, chores);
-})
+  tasklist.createTask(placeHolder, chores);
+});
