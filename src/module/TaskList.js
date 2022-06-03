@@ -56,30 +56,30 @@ export default class TaskList {
     const deleteButoon = document.createElement('button');
     deleteButoon.innerHTML = 'clear all completed items';
     placeholder.appendChild(deleteButoon);
-    deleteButoon.addEventListener('click', this.delete);
+    deleteButoon.addEventListener('click', this.delete.bind(this));
   };
 
-  isDone(evt) {
-    const label = evt.target.closest('li').children[1];
-    if (evt.target.checked) {
-      label.classList.add('linethrough');
-    } else {
-      label.classList.remove('linethrough');
-    }
-  }
+//   isDone(evt) {
+//     const label = evt.target.closest('li').children[1];
+//     if (evt.target.checked) {
+//       label.classList.add('linethrough');
+//     } else {
+//       label.classList.remove('linethrough');
+//     }
+//   }
 
-  getElement(index) {
-    let current = this.head;
-    let count = 0;
-    while (current) {
-      if (count === index) {
-        return current;
-      }
-      count += 1;
-      current = current.next_task;
-    }
-    return null;
-  }
+//   getElement(index) {
+//     let current = this.head;
+//     let count = 0;
+//     while (current) {
+//       if (count === index) {
+//         return current;
+//       }
+//       count += 1;
+//       current = current.next_task;
+//     }
+//     return null;
+//   }
 
   // delete(placeholder, evt){
   //     const doneItems = document.querySelectorAll('.linethrough');
