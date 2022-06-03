@@ -5,29 +5,31 @@ export default class TaskList {
   constructor(placeholder) {
     this.head = null;
     this.size = 0;
-    this.tasks = JSON.parse(localStorage.getItem('todolist')) || [];
+    this.tasks =  []
+    
+    // JSON.parse(localStorage.getItem('todolist')) ||
     this.createTask(placeholder, this.tasks);
   }
 
-  addtask = (taskDetails, placeholder) => {
-    const task = new Task(taskDetails);
+//   addtask = (taskDetails, placeholder) => {
+//     const task = new Task(taskDetails);
 
-    let current;
-    if (!this.head) {
-      this.head = task;
-    } else {
-      current = this.head;
-      while (current.next_task) {
-        current = current.next_task;
-      }
-      current.next_task = task;
-    }
-    this.size += 1;
-    this.tasks.push(task);
-    this.createTask(placeholder, this.tasks);
+//     let current;
+//     if (!this.head) {
+//       this.head = task;
+//     } else {
+//       current = this.head;
+//       while (current.next_task) {
+//         current = current.next_task;
+//       }
+//       current.next_task = task;
+//     }
+//     this.size += 1;
+//     this.tasks.push(task);
+//     this.createTask(placeholder, this.tasks);
 
-    localStorage.setItem('todolist', JSON.stringify(this.tasks));
-  };
+//     localStorage.setItem('todolist', JSON.stringify(this.tasks));
+//   };
 
   createTask = (placeholder, arr) => {
     placeholder.innerHTML = '';
@@ -50,13 +52,13 @@ export default class TaskList {
       label.setAttribute('data', i);
       i += 1;
       checkBox.type = 'checkbox';
-      label.innerHTML = `${element.task.description}`;
-      element.task.index = i;
+      label.innerHTML = `${element.description}`;
+      element.index = i;
     });
     const deleteButoon = document.createElement('button');
     deleteButoon.innerHTML = 'clear all completed items';
     placeholder.appendChild(deleteButoon);
-    deleteButoon.addEventListener('click', this.delete.bind(this));
+    //deleteButoon.addEventListener('click', this.delete.bind(this));
   };
 
   //   isDone(evt) {

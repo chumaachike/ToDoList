@@ -1,6 +1,6 @@
 # ToDoList
 
- This is a mobile version skelton version of a portfolio application 
+ This is a to do list web application which helps people curate their tasks for the day.
 
 
 ## Built With
