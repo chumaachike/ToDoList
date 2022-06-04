@@ -68,11 +68,11 @@ export default class TaskList {
 
   isDone(evt) {
     const label = evt.target.closest('li').children[1];
-      if (evt.target.checked) {
+    if (evt.target.checked) {
       label.classList.add('linethrough');
       const index = label.getAttribute('data');
       this.tasks[index].task.iscompleted = true;
-    } else {
+    }else{
       label.classList.remove('linethrough');
       const index = label.getAttribute('data');
       this.tasks[index].task.iscompleted = true;
