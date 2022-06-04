@@ -72,7 +72,7 @@ export default class TaskList {
       label.classList.add('linethrough');
       const index = label.getAttribute('data');
       this.tasks[index].task.iscompleted = true;
-    }else{
+    } else {
       label.classList.remove('linethrough');
       const index = label.getAttribute('data');
       this.tasks[index].task.iscompleted = true;
