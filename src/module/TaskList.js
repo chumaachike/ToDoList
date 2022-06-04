@@ -76,10 +76,12 @@ export default class TaskList {
       label.classList.add('linethrough');
       const index = label.getAttribute('data');
       this.tasks[index].task.iscompleted = true;
+      localStorage.setItem('todolist', JSON.stringify(this.tasks));
     } else {
       label.classList.remove('linethrough');
       const index = label.getAttribute('data');
-      this.tasks[index].task.iscompleted = true;
+      this.tasks[index].task.iscompleted = false;
+      localStorage.setItem('todolist', JSON.stringify(this.tasks));
     }
   }
 
@@ -97,13 +99,9 @@ export default class TaskList {
   }
 
   delete(placeholder) {
-    const doneItems = document.querySelectorAll('.linethrough');
-    doneItems.forEach((item) => {
-      const index = item.getAttribute('data');
-      this.tasks.splice(index, 1);
-    });
-    this.createTask(placeholder, this.tasks);
+    this.tasks = this.tasks.filter((task)=>task.task.iscompleted===false)
     localStorage.setItem('todolist', JSON.stringify(this.tasks));
+    this.createTask(placeholder, this.tasks);
   }
 
   deleteTask(placeholder, evt) {
