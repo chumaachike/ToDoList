@@ -99,7 +99,7 @@ export default class TaskList {
   }
 
   delete(placeholder) {
-    this.tasks = this.tasks.filter((task)=>task.task.iscompleted===false)
+    this.tasks = this.tasks.filter((task) => task.task.iscompleted === false);
     localStorage.setItem('todolist', JSON.stringify(this.tasks));
     this.createTask(placeholder, this.tasks);
   }
