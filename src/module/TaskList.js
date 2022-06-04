@@ -1,16 +1,16 @@
-import Task from "./Task";
-import delButton from "../assets/3-vertical-dots.png";
-import threeVerticalLines from "../assets/download.png";
+import Task from './Task';
+import delButton from '../assets/3-vertical-dots.png';
+import threeVerticalLines from '../assets/download.png';
 
 export default class TaskList {
   constructor(placeholder) {
-    this.tasks = JSON.parse(localStorage.getItem("todolist")) || [];
+    this.tasks = JSON.parse(localStorage.getItem('todolist')) || [];
     this.head = this.tasks[this.tasks.length - 1];
     this.size = this.tasks.length;
     this.createTask(placeholder, this.tasks);
-    this.delImage = document.createElement("img");
+    this.delImage = document.createElement('img');
     this.delImage.src = delButton;
-    this.delImage.setAttribute("height", "30");
+    this.delImage.setAttribute('height', '30');
   }
 
   addtask = (taskDetails, placeholder) => {
@@ -31,54 +31,54 @@ export default class TaskList {
     this.tasks.push(task);
     this.createTask(placeholder, this.tasks);
 
-    localStorage.setItem("todolist", JSON.stringify(this.tasks));
+    localStorage.setItem('todolist', JSON.stringify(this.tasks));
   };
 
   createTask = (placeholder, arr) => {
-    placeholder.innerHTML = "";
+    placeholder.innerHTML = '';
     let i = 0;
-    const unorderedList = document.createElement("ul");
+    const unorderedList = document.createElement('ul');
     placeholder.appendChild(unorderedList);
     arr.forEach((element) => {
-      const listItem = document.createElement("li");
-      const checkBox = document.createElement("input");
-      const label = document.createElement("label");
-      const imgIcon = document.createElement("img");
+      const listItem = document.createElement('li');
+      const checkBox = document.createElement('input');
+      const label = document.createElement('label');
+      const imgIcon = document.createElement('img');
       imgIcon.src = threeVerticalLines;
-      imgIcon.setAttribute("height", "30");
-      imgIcon.classList.add("move-pointer");
+      imgIcon.setAttribute('height', '30');
+      imgIcon.classList.add('move-pointer');
       imgIcon.addEventListener(
-        "click",
+        'click',
         this.deleteTask.bind(this, placeholder)
       );
       unorderedList.appendChild(listItem);
       listItem.appendChild(checkBox);
       listItem.appendChild(label);
       listItem.appendChild(imgIcon);
-      label.classList.add("label");
-      label.setAttribute("data", i);
-      checkBox.type = "checkbox";
-      checkBox.addEventListener("change", this.isDone.bind(this));
+      label.classList.add('label');
+      label.setAttribute('data', i);
+      checkBox.type = 'checkbox';
+      checkBox.addEventListener('change', this.isDone.bind(this));
       label.innerHTML = `${element.task.description}`;
       element.task.index = i;
       this.head = element[i];
       i += 1;
     });
-    const deleteButoon = document.createElement("button");
-    deleteButoon.innerHTML = "clear all completed items";
+    const deleteButoon = document.createElement('button');
+    deleteButoon.innerHTML = 'clear all completed items';
     placeholder.appendChild(deleteButoon);
-    deleteButoon.addEventListener("click", this.delete.bind(this, placeholder));
+    deleteButoon.addEventListener('click', this.delete.bind(this, placeholder));
   };
 
   isDone(evt) {
-    const label = evt.target.closest("li").children[1];
+    const label = evt.target.closest('li').children[1];
     if (evt.target.checked) {
-      label.classList.add("linethrough");
-      const index = label.getAttribute("data");
+      label.classList.add('linethrough');
+      const index = label.getAttribute('data');
       this.tasks[index].task.iscompleted = true;
     } else {
-      label.classList.remove("linethrough");
-      const index = label.getAttribute("data");
+      label.classList.remove('linethrough');
+      const index = label.getAttribute('data');
       this.tasks[index].task.iscompleted = true;
     }
   }
@@ -97,50 +97,49 @@ export default class TaskList {
   }
 
   delete(placeholder) {
-    const doneItems = document.querySelectorAll(".linethrough");
+    const doneItems = document.querySelectorAll('.linethrough');
     doneItems.forEach((item) => {
-      const index = item.getAttribute("data");
+      const index = item.getAttribute('data');
       this.tasks.splice(index, 1);
     });
     this.createTask(placeholder, this.tasks);
-    localStorage.setItem("todolist", JSON.stringify(this.tasks));
+    localStorage.setItem('todolist', JSON.stringify(this.tasks));
   }
 
   deleteTask(placeholder, evt) {
-    const editInput = document.createElement("input");
-    editInput.type = "text";
-    const label = evt.target.closest("li").children[1];
-    editInput.setAttribute("data", label.getAttribute("data"));
+    const editInput = document.createElement('input');
+    editInput.type = 'text';
+    const label = evt.target.closest('li').children[1];
+    editInput.setAttribute('data', label.getAttribute('data'));
     label.replaceWith(editInput);
-    const editButton = evt.target.closest("li").children[2];
-    console.log(editInput);
+    const editButton = evt.target.closest('li').children[2];
     editButton.replaceWith(this.delImage);
     this.delImage.addEventListener(
-      "click",
+      'click',
       this.delTask.bind(this, placeholder)
     );
     editInput.addEventListener(
-      "keypress",
+      'keypress',
       this.editInput.bind(this, placeholder)
     );
   }
+
   delTask(placeholder, evt) {
-    const label = evt.target.closest("li").children[1];
-    const index = label.getAttribute("data");
+    const label = evt.target.closest('li').children[1];
+    const index = label.getAttribute('data');
     this.tasks.splice(index, 1);
-    localStorage.setItem("todolist", JSON.stringify(this.tasks));
+    localStorage.setItem('todolist', JSON.stringify(this.tasks));
     this.createTask(placeholder, this.tasks);
   }
+  
   editInput(placeholder, evt) {
-    console.log("index");
-    if (evt.key === "Enter") {
-      const index = evt.target.closest("li").children[1].getAttribute("data");
-      console.log(this.tasks[index]);
+    if (evt.key === 'Enter') {
+      const index = evt.target.closest('li').children[1].getAttribute('data');
       this.tasks[index].task.description =
-        evt.target.closest("li").children[1].value;
-      localStorage.setItem("todolist", JSON.stringify(this.tasks));
+        evt.target.closest('li').children[1].value;
+      localStorage.setItem('todolist', JSON.stringify(this.tasks));
       this.createTask(placeholder, this.tasks);
-      evt.target.closest("li").children[1].value = "";
+      evt.target.closest('li').children[1].value = '';
     }
   }
 }
