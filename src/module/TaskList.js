@@ -49,7 +49,7 @@ export default class TaskList {
       imgIcon.classList.add('move-pointer');
       imgIcon.addEventListener(
         'click',
-        this.deleteTask.bind(this, placeholder)
+        this.deleteTask.bind(this, placeholder),
       );
       unorderedList.appendChild(listItem);
       listItem.appendChild(checkBox);
@@ -116,11 +116,11 @@ export default class TaskList {
     editButton.replaceWith(this.delImage);
     this.delImage.addEventListener(
       'click',
-      this.delTask.bind(this, placeholder)
+      this.delTask.bind(this, placeholder),
     );
     editInput.addEventListener(
       'keypress',
-      this.editInput.bind(this, placeholder)
+      this.editInput.bind(this, placeholder),
     );
   }
 
@@ -131,12 +131,11 @@ export default class TaskList {
     localStorage.setItem('todolist', JSON.stringify(this.tasks));
     this.createTask(placeholder, this.tasks);
   }
-  
+
   editInput(placeholder, evt) {
     if (evt.key === 'Enter') {
       const index = evt.target.closest('li').children[1].getAttribute('data');
-      this.tasks[index].task.description =
-        evt.target.closest('li').children[1].value;
+      this.tasks[index].task.description = evt.target.closest('li').children[1].value;
       localStorage.setItem('todolist', JSON.stringify(this.tasks));
       this.createTask(placeholder, this.tasks);
       evt.target.closest('li').children[1].value = '';
