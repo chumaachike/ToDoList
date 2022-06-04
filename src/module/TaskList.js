@@ -45,7 +45,7 @@ export default class TaskList {
       imgIcon.classList.add('move-pointer');
       imgIcon.addEventListener(
         'click',
-        this.deleteTask.bind(this, placeholder)
+        this.deleteTask.bind(this, placeholder),
       );
       unorderedList.appendChild(listItem);
       listItem.appendChild(checkBox);
@@ -68,13 +68,13 @@ export default class TaskList {
 
   isDone(evt) {
     const label = evt.target.closest('li').children[1];
-    console.log(this.tasks);
-    if (evt.target.checked) {
+      if (evt.target.checked) {
       label.classList.add('linethrough');
       const index = label.getAttribute('data');
       this.tasks[index].task.iscompleted = true;
     } else {
       label.classList.remove('linethrough');
+      const index = label.getAttribute('data');
       this.tasks[index].task.iscompleted = true;
     }
   }
@@ -92,7 +92,7 @@ export default class TaskList {
     return null;
   }
 
-  delete(placeholder, evt) {
+  delete(placeholder) {
     const doneItems = document.querySelectorAll('.linethrough');
     doneItems.forEach((item) => {
       const index = item.getAttribute('data');
