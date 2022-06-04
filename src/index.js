@@ -3,33 +3,22 @@ import TaskList from './module/TaskList';
 import { DateTime } from './module/luxton';
 
 const placeHolder = document.querySelector('#place-holder');
+const form = document.querySelector('form');
 const tasklist = new TaskList(placeHolder);
 const getDate = DateTime.now();
 document.querySelector('.footer-year').innerHTML = `${getDate.year}`;
 
-const chores = [
-  {
-    iscomplted: false,
-    description: 'clean the room',
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const object = {
+    iscompleted: false,
+    description: '',
     index: null,
-  },
-  {
-    iscomplted: false,
-    description: 'wash plates ',
-    index: null,
-  },
-  {
-    iscomplted: false,
-    description: 'go and study',
-    index: null,
-  },
-  {
-    iscomplted: false,
-    description: 'go to school',
-    index: 1,
-  },
-];
-
-window.addEventListener('DOMContentLoaded', () => {
-  tasklist.createTask(placeHolder, chores);
+  };
+  object.description = document.querySelector('.desc').value;
+  if (object.description === '') {
+    return;
+  }
+  document.querySelector('.desc').value = '';
+  tasklist.addtask(object, placeHolder);
 });
